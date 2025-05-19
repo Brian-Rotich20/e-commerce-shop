@@ -1,0 +1,29 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <!-- Hero Section -->
+        <!-- Hero Section -->
+        <div class="jumbotron text-center bg-light">
+            <h1 class="display-4 font-weight-bold">Welcome to Inova Shop!</h1>
+            <p class="lead">Discover the best products at unbeatable prices, all in one place.</p>
+            <hr class="my-4">
+            <p class="mb-4">Shop now and enjoy exclusive deals, fast shipping, and top-notch customer service.</p>
+            <a class="btn btn-primary btn-lg mr-2" href="{% url 'store' %}" role="button">Shop Now</a>
+            <a class="btn btn-outline-secondary btn-lg" href="#about" role="button">Learn More</a>
+        </div>
+ <div class="row">
+    {% for product in products %}
+    <div class="col-lg-4">
+        <img class="thumbnail" src="{{product.imageURL}}" alt="{{product.name}}">
+        <div class="box-element product">
+            <h6><strong>{{product.name}}</strong></h6>
+            <hr>
+    
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+            <a class="btn btn-outline-success" href="#">View</a>
+            <h4 style="text-align: right"><strong>${{product.price|floatformat:2}}</strong></h4>
+        </div>
+    </div>
+    {% endfor %}
+ </div>
+{% endblock content %}
