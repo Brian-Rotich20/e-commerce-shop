@@ -76,8 +76,8 @@
 </div>
 
 <script type="text/javascript">
-    var shipping = '{{order.shipping}}'
-    var total ='{{order.get_cart_total}}'
+    var shipping = '{{shipping}}'
+    var total ='{{order.get_cart_total|floatformat:2}}'
 
     if (shipping == 'False'){
         document.getElementById('shipping-info').innerHTML = ''
@@ -125,7 +125,7 @@
                 shippingInfo.state = form.state.value
                 shippingInfo.zipcode = form.zipcode.value
             }
-            if(user != 'AnonymousUser'){
+            if(user == 'AnonymousUser'){
                 userFormData.name = form.name.value
                 userFormData.email = form.email.value
             }
